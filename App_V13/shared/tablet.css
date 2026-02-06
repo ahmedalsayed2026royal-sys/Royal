@@ -1,0 +1,83 @@
+/* Tablet 12" layout + stylus friendly input
+   Applies only between 768px and 1200px.
+*/
+@media (min-width: 768px) and (max-width: 1200px) {
+  html { -webkit-text-size-adjust: 100%; }
+
+  :root{
+    --tb-gap: 8px;
+    --tb-pad: 10px;
+    --tb-sidebar: 260px;
+  }
+
+  /* ---- Navigation: prefer simple sidebar on tablet ---- */
+  .hamburger,
+  .menu-toggle,
+  .mobile-menu,
+  .mobile-only,
+  .sidebar-toggle{
+    display: none !important;
+  }
+
+  /* Generic layout containers used in CBCT/Airway etc. */
+  .layout{
+    grid-template-columns: 1fr minmax(240px, var(--tb-sidebar)) !important;
+  }
+
+  /* Force sidebar to be static (disable mobile overlay/drawer behavior) */
+  body.viewer-mode .sidebar{
+    position: static !important;
+    top: auto !important;
+    bottom: auto !important;
+    right: auto !important;
+    left: auto !important;
+    width: auto !important;
+    transform: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+    z-index: auto !important;
+    pointer-events: auto !important;
+    opacity: 1 !important;
+  }
+  body.viewer-mode.sidebar-open .sidebar{
+    transform: none !important;
+  }
+
+  /* Controls sizing (avoid oversized sliders/dropdowns on tablet) */
+  header select, header input, header button,
+  .toolbar select, .toolbar input, .toolbar button{
+    font-size: 13px !important;
+    padding: 6px 8px !important;
+    min-height: 32px !important;
+  }
+
+  /* Range sliders feel huge on tablet by default in some browsers */
+  input[type="range"]{
+    height: 22px !important;
+  }
+
+  /* Tighten top bars */
+  header, .topbar, .navbar{
+    gap: 6px !important;
+  }
+
+  /* Ensure grids don't overflow */
+  .view-grid, .content, .panels{
+    min-width: 0 !important;
+    min-height: 0 !important;
+  }
+}
+
+/* Stylus/pointer: prevent page pan/zoom from hijacking drawing */
+.panel canvas,
+canvas,
+.dicom-canvas,
+.fabric-canvas,
+.draw-layer,
+#dicomCanvas,
+#overlayCanvas{
+  touch-action: none;
+  -ms-touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
