@@ -583,7 +583,6 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="shared/tablet.css">
 </head>
 <body>
 
@@ -4003,9 +4002,7 @@ renderTable('tbl_occlusion', occlusionRows, { showSeverity:false });
     if(!w) return;
 
     w.document.open();
-    w.document.write(`<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">${extraCss}  <link rel="stylesheet" href="shared/tablet.css">
-</head><body>${pagesHtml}  <script src="shared/tablet-input.js"></script>
-</body></html>`);
+    w.document.write(`<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">${extraCss}</head><body>${pagesHtml}</body></html>`);
     w.document.close();
 
     // Print after load to prevent blank PDF
@@ -4040,9 +4037,7 @@ renderTable('tbl_occlusion', occlusionRows, { showSeverity:false });
       </style>
     `;
     w.document.open();
-    w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>${title}</title>${css}  <link rel="stylesheet" href="shared/tablet.css">
-</head><body>${bodyHtml}  <script src="shared/tablet-input.js"></script>
-</body></html>`);
+    w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>${title}</title>${css}</head><body>${bodyHtml}</body></html>`);
     w.document.close();
     w.focus();
     setTimeout(()=>{ try{ w.print(); }catch(e){} }, 250);
@@ -5166,8 +5161,7 @@ ${phase.tasks.map(task => `- ${task}`).join('\n')}`
                   .no-print { margin-top: 16px; }
                   @media print { .no-print { display: none !important; } body { margin: 18px; } }
               </style>
-            <link rel="stylesheet" href="shared/tablet.css">
-</head>
+          </head>
           <body>
               <h1>Treatment Planner Report</h1>
 
@@ -5198,8 +5192,7 @@ ${phase.tasks.map(task => `- ${task}`).join('\n')}`
               <div class="no-print">
                   <button onclick="window.print()" style="background:#1a3c5a;color:#fff;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;">Print / Save as PDF</button>
               </div>
-            <script src="shared/tablet-input.js"></script>
-</body>
+          </body>
           </html>
       `);
 
@@ -5337,6 +5330,5 @@ ${phase.tasks.map(task => `- ${task}`).join('\n')}`
   }
 
 </script>
-  <script src="shared/tablet-input.js"></script>
 </body>
 </html>
