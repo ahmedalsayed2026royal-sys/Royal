@@ -1719,7 +1719,18 @@ fabImg.scale(ratio);
 calibrationCanvas.setBackgroundImage(fabImg, calibrationCanvas.renderAll.bind(calibrationCanvas));
 
 // Track display scale used during calibration (so we can keep measurement units consistent later)
-window.RRZ_CalibDisplayScale = ratio;try{ rrzEnableCalibrationPanZoom(calibrationCanvas); }catch(e){}
+window.RRZ_CalibDisplayScale = ratio;
+/* RRZ PATCH: Keep calibration image FIXED (no pan/zoom). Only manual points move. */
+try{
+  calibrationCanvas.setViewportTransform([1,0,0,1,0,0]); // lock view
+  calibrationCanvas.defaultCursor = 'default';
+  // ensure any accidental wheel/drag handlers are removed (defensive)
+  calibrationCanvas.off('mouse:wheel');
+  calibrationCanvas.off('mouse:down');
+  calibrationCanvas.off('mouse:move');
+  calibrationCanvas.off('mouse:up');
+  calibrationCanvas.off('mouse:out');
+}catch(e){}
 // Store original image for main canvas later
         window.RRZ_OriginalImage = img;
         window.RRZ_ImageRatio = ratio;
