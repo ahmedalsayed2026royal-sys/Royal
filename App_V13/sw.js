@@ -3,7 +3,7 @@
 ملاحظة: لا يَكِش ملفات كبيرة/ديناميكية (PDF runtime, blobs) بشكل مقصود.
 */
 // تم تحديث الإصدار إلى 1.16 لضمان تحميل التعديلات الجديدة في voice-report.html
-const CACHE_VERSION = 'rrz-unified-v1.26';
+const CACHE_VERSION = 'rrz-unified-v1.29';
 const CORE = ['./',
 'index.html',
 'subscription.html',
